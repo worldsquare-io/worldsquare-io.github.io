@@ -17,12 +17,13 @@
 	border-radius: 20px;
 	grid-column: 4;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	padding: 0.5em;
 }
 
 .post {
 	text-align: left;
 	font-weight: bold;
-  font-size: 1.2em;
+	font-size: 1.3em;
 	background-color: white;
 	margin: 5px;
 	border-radius: 10px;
@@ -32,27 +33,66 @@
 
 #comment {
 	font-weight: normal;
-  font-size: 0.9em;
-  box-shadow: none;
+	font-size: 0.9em;
+	box-shadow: none;
+	display: flexbox;
 }
 
-.comment-input-container{
-  display:flex ;
-  align-items: center;
+.comment-input-container {
+	display: grid;
+	grid-column: 1 / span 3;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
 }
-.comment-input{
-  border-style: hidden;
+.comment-input {
+	border-style: hidden;
 	margin: 5px;
 	border-radius: 10px;
-  padding: 3px 10px;
-  background-color: rgb(229, 230, 230);
+	padding: 3px 10px;
+	background-color: rgb(229, 230, 230);
+	width: 100%;
 }
 
-input:focus, textarea:focus, select:focus{
-  outline: none;
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
 }
 
 .send-button {
-  align-content: right;
+	justify-content: space-between;
+	/* border: red solid 1px; */
+	padding: 7px;
+	grid-column: 4;
+	cursor: pointer;
 }
 
+.comment-container {
+	height: 78vh;
+	overflow-y: auto;
+	position: relative;
+	margin-left: -5px;
+
+	/* overflow: hidden; */
+}
+
+.timestamp-container {
+	text-align: right;
+	font-weight: lighter;
+	font-size: 0.8em;
+  padding: 0.3em;
+}
+
+.message-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.color-region {
+  width: 2em;
+  height: 0.2em;
+	background-color: rgb(184, 255, 204);
+  margin-top: 0.5em;
+  margin-bottom: -0.5em;
+}

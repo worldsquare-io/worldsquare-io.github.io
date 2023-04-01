@@ -1,8 +1,8 @@
-function Post() {
+function Post({title}) {
 	return (
 		<div>
 			<p className="post">
-				It’s real! Four types of Twitter user  according.
+				{title}
 			</p>
 		</div>
 	);
