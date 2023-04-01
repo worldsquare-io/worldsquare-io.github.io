@@ -1,38 +1,58 @@
 .App {
-  text-align: center;
+	display: grid;
+	height: 100vh;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Map {
+	background-color: white;
+	grid-column: 1 / span 3;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Thread {
+	background-color: rgb(247, 247, 247);
+	margin: 5%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 20px;
+	grid-column: 4;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.post {
+	text-align: left;
+	font-weight: bold;
+  font-size: 1.2em;
+	background-color: white;
+	margin: 5px;
+	border-radius: 10px;
+	padding: 3px 10px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+#comment {
+	font-weight: normal;
+  font-size: 0.9em;
+  box-shadow: none;
+}
+
+.comment-input-container{
+  display:flex ;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.comment-input{
+  border-style: hidden;
+	margin: 5px;
+	border-radius: 10px;
+  padding: 3px 10px;
+  background-color: rgb(229, 230, 230);
 }
 
-.App-link {
-  color: #61dafb;
+input:focus, textarea:focus, select:focus{
+  outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.send-button {
+  align-content: right;
 }
+
