@@ -1,3 +1,5 @@
+import { Card } from "react-bootstrap";
+
 function Comment({ message, timestamp }) {
     const date = new Date(timestamp);
     const hours = date.getHours();
@@ -11,8 +13,8 @@ function Comment({ message, timestamp }) {
     return (
         <div>
             <div className="post" id="comment">
-                <div className="message-container">
-                    <div className="color-region"></div>
+                <div className="message-container p-1">
+                    {/* <div className="color-region"></div> */}
                     <p>{message}</p>
                 </div>
                 <div className="timestamp-container">

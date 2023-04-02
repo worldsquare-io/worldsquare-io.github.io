@@ -4,6 +4,7 @@ import   React                                                        from "reac
 import   OpenStreetMap                                                from "./components/OpenStreetMap";
 import   Container                                                    from "react-bootstrap/Container";
 import   Thread                                                       from "./components/Thread";
+import   ResizeHandle                                                 from "./components/ResizeHandle";
 import { Button, Form, InputGroup }                                   from "react-bootstrap";
 import { useState, useEffect }                                        from "react";
 import { Row, Col }                                                   from "react-bootstrap";
@@ -132,7 +133,7 @@ const makeSidebarOverview = (parentItems, switchToCreate) => {
     };
 
     return (
-        <Container fluid className="h-100">
+        <Container fluid className="h-100 px-2">
             <Row className="h-100 text-center align-items-center">
                 <Col>
                     <h1>worldsquare</h1>
@@ -144,13 +145,14 @@ const makeSidebarOverview = (parentItems, switchToCreate) => {
     );
 };
 
-const makeSidebarDetail = (parentItem, childItems, onRequestRefresh) => {
+const makeSidebarDetail = (parentItem, childItems, onRequestRefresh, onRequestReturn) => {
     return (
         <div>
             <Thread
                 parentItem={parentItem}
                 childItems={childItems}
                 onRequestRefresh={onRequestRefresh}
+                onRequestReturn={onRequestReturn}
             />
         </div>
     );
@@ -215,7 +217,7 @@ function App() {
         <PanelGroup className="App" direction="horizontal">
 
             {/* Map */}
-            <Panel className="Map" defaultSize={80}>
+            <Panel className="Map" defaultSize={70}>
                 <OpenStreetMap
                     parentPins={parentItems}
                     childPins={childItems}
@@ -225,17 +227,17 @@ function App() {
             </Panel>
 
             {/* Resize */}
-            <PanelResizeHandle className="app-resize-handle" />
+            <ResizeHandle className="app-resize-handle" />
 
             {/* Sidebar */}
-            <Panel className="app-sidebar" minSize={20}>
+            <Panel className="app-sidebar" minSize={30}>
                 {isCreateView && <OurSidebarCreate
                     lastMapClick={lastMapClick}
                     switchToOverview={switchToOverview}
                     switchToDetail={switchToDetail}
                 />}
                 {isOverview && makeSidebarOverview(parentItems, switchToCreate)}
-                {isDetailView && makeSidebarDetail(parentItems[0], childItems, () => switchToDetail(parentItems[0]))}
+                {isDetailView && makeSidebarDetail(parentItems[0], childItems, () => switchToDetail(parentItems[0]), switchToOverview)}
             </Panel>
 
             {/* FAB */}
