@@ -120,8 +120,32 @@ img {
     overflow-x: hidden;
     width: 100vw;
     height: 100vh;
+    pointer-events: none;
 }
 
 .ResizeHandleOuter {
+    pointer-events: auto;
     flex: 0 0 1em;
+}
+
+.leaflet-container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: auto;
+}
+
+.ForegroundContainer {
+    float: right;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.ThreadContainer {
+    pointer-events: auto;
 }

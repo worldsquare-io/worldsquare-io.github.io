@@ -20,7 +20,13 @@ function Thread({ parentItem, childItems }) {
             <div className="post-comment-container">
                 <Post title={title} variant={variant} />
                 <div className="comment-container">
-                    {childItems.map((item) => <Comment key={item._id} message={item.message} timestamp={item.timestamp} />)}
+                    {childItems.map((item) => (
+                        <>
+                            <Comment key={item._id} message={item.message} timestamp={item.timestamp} />
+                            <Comment key={item._id} message={item.message} timestamp={item.timestamp} />
+                            <Comment key={item._id} message={item.message} timestamp={item.timestamp} />
+                        </>
+                    ))}
                 </div>
             </div>
 
