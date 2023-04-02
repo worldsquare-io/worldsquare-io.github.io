@@ -79,22 +79,14 @@ const ShowPinsComponent = ({ parentPins, childPins, onPinClick }) => {
 const OpenStreetMap = ({ parentPins, childPins, onPinClick, onMapClick }) => {
     // Pin should be of form { id: string, latlng: [number, number] }.
     return (
-        <MapContainer center={defaultCenter} zoom={defaultZoom}>
+        <MapContainer center={defaultCenter} zoom={defaultZoom} doubleClickZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-
-            {/* This will move the map to the location of the user on load. */}
             <MoveToUserOnLoadComponent />
-
-            {/* This will listen for clicks on the map (not on a pin) and call the handler. */}
             <OnMapClickComponent onMapClick={onMapClick} />
-
-            {/* This will draw all of our pins (parents and children) on the map. */}
             <ShowPinsComponent parentPins={parentPins} childPins={childPins} onPinClick={onPinClick} />
-
-            {/* This will draw the lines from the child pins to the parent pin. */}
             {(parentPins.length === 1) && <VectorLayerComponent parentPin={parentPins[0]} childPins={childPins} />}
         </MapContainer>
     );

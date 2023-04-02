@@ -2,8 +2,14 @@ import React from 'react';
 import OpenStreetMap from "../components/OpenStreetMap";
 import Thread from "../components/Thread";
 import { useState, useEffect } from 'react';
-import { BsFillFilterCircleFill } from "react-icons/bs";
 import { fetchParentItems, fetchChildItems } from "../helpers/Api";
+import ResizeHandle from '../components/ResizeHandle';
+
+// ResizableReactComponents
+import { Panel, PanelGroup } from "react-resizable-panels";
+
+// MaterialUI
+import { Box } from "@mui/material";
 
 export default function DesktopView() {
     const [parentPins, setParentPins] = useState([]);
@@ -62,17 +68,21 @@ export default function DesktopView() {
     };
 
     return (
-        <React.Fragment>
-            <BsFillFilterCircleFill className="filter-icon" />
-            <div className="Map">
-                <OpenStreetMap
-                    parentPins={parentPins}
-                    childPins={childPins}
-                    onPinClick={onPinClick}
-                    onMapClick={onMapClick}
-                />
-            </div>
-            {makeThread()}
-        </React.Fragment>
+        <Box className="DesktopViewContainer">
+            <PanelGroup className="PanelGroup" direction="horizontal">
+                <Panel className="MapPanel" defaultSize={80}>
+                    <OpenStreetMap
+                        parentPins={parentPins}
+                        childPins={childPins}
+                        onPinClick={onPinClick}
+                        onMapClick={onMapClick}
+                    />
+                </Panel>
+                <ResizeHandle />
+                <Panel className="ThreadPanel" collapsible={true}>
+                    {makeThread()}
+                </Panel>
+            </PanelGroup>
+        </Box>
     );
 };
