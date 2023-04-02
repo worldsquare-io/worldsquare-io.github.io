@@ -56,6 +56,7 @@ function Thread({ threadID }) {
 	const [globalReponse, setGlobalResponse] = useState();
 
 	function handleInputMessage(e) {
+    e.preventDefault();
 		console.log(text);
 		setText("");
 		fetch("https://api.worldsquare.io/items/", {
