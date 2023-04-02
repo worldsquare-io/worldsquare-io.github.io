@@ -1,5 +1,3 @@
-// import { useState, useEffect } from "react";
-// import MobileView from './views/MobileView';
 import DesktopView from './views/DesktopView';
 
 // CSS
@@ -28,8 +26,8 @@ function App() {
             {/* {!isMobile && <DesktopView />} */}
             {/* {isMobile && <MobileView />} */}
             <DesktopView />
-		</div>
-	);
+        </div>
+    );
 }
 
 export default App;

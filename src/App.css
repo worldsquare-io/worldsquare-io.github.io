@@ -38,6 +38,12 @@
 	display: flexbox;
 }
 
+#comment:hover {
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+	transition: 0.5s;
+}
+
 .comment-input-container {
 	display: grid;
 	grid-column: 1 / span 3;
@@ -69,19 +75,16 @@ select:focus {
 }
 
 .comment-container {
-	height: 78vh;
+	height: 75vh;
 	overflow-y: auto;
 	position: relative;
-	margin-left: -5px;
-
-	/* overflow: hidden; */
 }
 
 .timestamp-container {
 	text-align: right;
 	font-weight: lighter;
 	font-size: 0.8em;
-  padding: 0.3em;
+	padding: 0.3em;
 }
 
 .message-container {
@@ -90,9 +93,33 @@ select:focus {
 }
 
 .color-region {
-  width: 2em;
-  height: 0.2em;
+	width: 2em;
+	height: 0.2em;
 	background-color: rgb(184, 255, 204);
-  margin-top: 0.5em;
-  margin-bottom: -0.5em;
+	margin-top: 0.5em;
+	margin-bottom: -0.5em;
+}
+img {
+	object-fit: cover;
+	/* height: 900px; */
+}
+
+.filter-icon {
+	position: absolute;
+	font-size: 1.5em;
+	color: aliceblue;
+	/* color: red; */
+	margin: 1em;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.variant {
+  font-size: 0.5em;
+  font-weight: lighter;
+  background:rgb(207, 207, 207);
+  padding: 0.1em 0.3em;
+  border-radius: 10%;
+  color: white;
+  margin-bottom: 10em;
 }
