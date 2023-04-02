@@ -4,7 +4,7 @@ import Thread from "./Thread";
 import { BsFillFilterCircleFill } from "react-icons/bs";
 
 function App() {
-	const threadID = "abc";
+	const threadID = "m4hj1CeDVKDEwef6FkOHr";
 
 	return (
 		<div className="App">

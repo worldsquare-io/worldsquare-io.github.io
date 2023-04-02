@@ -96,6 +96,7 @@ select:focus {
 	width: 2em;
 	height: 0.2em;
 	background-color: rgb(184, 255, 204);
+	border-radius: 10px;
 	margin-top: 0.5em;
 	margin-bottom: -0.5em;
 }
@@ -108,18 +109,18 @@ img {
 	position: absolute;
 	font-size: 1.5em;
 	color: aliceblue;
-	/* color: red; */
+
 	margin: 1em;
 	bottom: 0;
 	cursor: pointer;
 }
 
 .variant {
-  font-size: 0.5em;
-  font-weight: lighter;
-  background:rgb(207, 207, 207);
-  padding: 0.1em 0.3em;
-  border-radius: 10%;
-  color: white;
-  margin-bottom: 10em;
+	font-size: 0.5em;
+	font-weight: lighter;
+	background: rgb(207, 207, 207);
+	padding: 0.1em 0.3em;
+	border-radius: 10%;
+	color: white;
+	margin-bottom: 10em;
 }
