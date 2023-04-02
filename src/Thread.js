@@ -2,11 +2,12 @@ import Post from "./Post";
 import Comment from "./Comment";
 import { nanoid } from "nanoid";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Thread({ threadID }) {
 	const sampleTitle = "It’s real! Four types of Twitter user  according.";
-	const commentList = [
+	const sampleVariant = "Local";
+	const temp = [
 		{
 			id: nanoid(),
 			message: "You forgot native defaults. You're Null",
@@ -48,6 +49,10 @@ function Thread({ threadID }) {
 			time: 1234,
 		},
 	];
+	const [commentList, setCommentList] = useState([]);
+	// fetch("api.worldsquare.io/items/")
+	// 	.then(response => response.json())
+	// 	.then(data => console.log(data));
 
 	const [text, setText] = useState("");
 
@@ -56,14 +61,27 @@ function Thread({ threadID }) {
 		setText("");
 	}
 
+	useEffect(() => {
+		getItemsFromAPI();
+	}, []);
+
+	function getItemsFromAPI() {
+		return fetch("https://api.worldsquare.io/items/")
+			.then(response => response.json())
+			.then(data => {
+        console.log(data[0],data[1],data[2])
+				setCommentList(data);
+			});
+	}
+
 	return (
 		<div className="thread-container">
 			<div className="post-comment-container">
-				<Post title={sampleTitle} />
+				<Post title={sampleTitle} variant={sampleVariant} />
 				<div className="comment-container">
 					{commentList.map((item, index) => (
-						<div key={item.id}>
-							<Comment message={item.message} timestamp={item.time} />
+						<div key={item._id}>
+							<Comment message={item.message} timestamp={item.timestamp} />
 						</div>
 					))}
 				</div>
@@ -74,7 +92,7 @@ function Thread({ threadID }) {
 					<input
 						type="text"
 						name="comment"
-            value={text}
+						value={text}
 						placeholder="comment here..."
 						className="comment-input"
 						onChange={e => setText(e.target.value)}
