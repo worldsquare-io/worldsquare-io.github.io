@@ -8,23 +8,24 @@ const defaultCenter = [0, 0];
 const defaultZoom = 12;
 
 // Methods
-const CreateMarkerIcon = () => new Icon({
+const createMarkerIcon = () => new Icon({
     iconUrl: markerIcon,
     iconSize: [25, 41],
     iconAnchor: [12, 41],
 });
 
-const Pin = ({ id, latlng, onClick }) => {
+// Components
+const PinComponent = ({ id, latlng, onClick }) => {
     return (
         <Marker
             position={latlng}
             eventHandlers={{ click: () => onClick ? onClick(id) : null }}
-            icon={CreateMarkerIcon()}
+            icon={createMarkerIcon()}
         />
     );
 };
 
-const MoveToUserOnLoad = () => {
+const MoveToUserOnLoadComponent = () => {
     const map = useMap();
     useEffect(() => {
 
@@ -43,7 +44,7 @@ const OnMapClickComponent = ({ onMapClick }) => {
     return null;
 };
 
-const CreateVectorLayer = ({ parentPin, childPins }) => {
+const VectorLayerComponent = ({ parentPin, childPins }) => {
     return childPins.map((childPin) => (
         <Polyline
             // This is to appease the warning about every item in a list needing a unique key.
@@ -55,9 +56,9 @@ const CreateVectorLayer = ({ parentPin, childPins }) => {
     ));
 };
 
-const CreatePins = ({ parentPins, childPins, onPinClick }) => {
+const ShowPinsComponent = ({ parentPins, childPins, onPinClick }) => {
     const makePinFromPin = (pin) => (
-        <Pin
+        <PinComponent
             // This is to appease the warning about every item in a list needing a unique key.
             key={pin.id}
 
@@ -85,16 +86,16 @@ const OpenStreetMap = ({ parentPins, childPins, onPinClick, onMapClick }) => {
             />
 
             {/* This will move the map to the location of the user on load. */}
-            <MoveToUserOnLoad />
+            <MoveToUserOnLoadComponent />
 
             {/* This will listen for clicks on the map (not on a pin) and call the handler. */}
             <OnMapClickComponent onMapClick={onMapClick} />
 
             {/* This will draw all of our pins (parents and children) on the map. */}
-            <CreatePins parentPins={parentPins} childPins={childPins} onPinClick={onPinClick} />
+            <ShowPinsComponent parentPins={parentPins} childPins={childPins} onPinClick={onPinClick} />
 
             {/* This will draw the lines from the child pins to the parent pin. */}
-            {(parentPins.length === 1) && <CreateVectorLayer parentPin={parentPins[0]} childPins={childPins} />}
+            {(parentPins.length === 1) && <VectorLayerComponent parentPin={parentPins[0]} childPins={childPins} />}
         </MapContainer>
     );
 };

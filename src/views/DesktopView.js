@@ -1,4 +1,4 @@
-// import Map from "../Map";
+import React from 'react';
 import OpenStreetMap from "../OpenStreetMap";
 import Thread from "../Thread";
 
@@ -32,7 +32,7 @@ export default function DesktopView() {
     };
 
     return (
-        <div>
+        <React.Fragment>
             <div className="Map">
                 {/* <Map /> */}
                 <OpenStreetMap
@@ -45,6 +45,6 @@ export default function DesktopView() {
             <div className="Thread">
                 <Thread threadID={threadID} />
             </div>
-        </div>
+        </React.Fragment>
     );
 };
