@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/worldsquare-frontend/static/css/main.074e34bb.css",
+    "main.js": "/worldsquare-frontend/static/js/main.e6e29dd0.js",
+    "index.html": "/worldsquare-frontend/index.html",
+    "main.074e34bb.css.map": "/worldsquare-frontend/static/css/main.074e34bb.css.map",
+    "main.e6e29dd0.js.map": "/worldsquare-frontend/static/js/main.e6e29dd0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.074e34bb.css",
+    "static/js/main.e6e29dd0.js"
+  ]
+}
