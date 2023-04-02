@@ -10,12 +10,12 @@
 }
 
 .thread-container {
-  background-color: rgb(247, 247, 247);
-	margin: 5%;
+	background-color: rgb(247, 247, 247);
 	border-radius: 20px;
 	grid-column: 4;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	padding: 0.5em;
+	margin: 5%;
 }
 
 .post {
@@ -48,7 +48,7 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-  /* border: 1px red solid; */
+	/* border: 1px red solid; */
 }
 .comment-input {
 	border-style: hidden;
@@ -122,4 +122,56 @@ img {
 	border-radius: 10%;
 	color: white;
 	margin-bottom: 10em;
+}
+
+.new-post-container {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	padding: 1em;
+	margin: 5%;
+	border-radius: 20px;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.local-remote-buttons {
+	display: block;
+	width: 10em;
+}
+
+.button {
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	margin: 0.3em;
+	cursor: pointer;
+}
+
+.button:hover{
+  background-color:rgb(234, 234, 234);
+}
+
+.local-remote-buttons {
+	width: 100%;
+	display: flex;
+}
+
+.new-post-input {
+	border: none;
+	border-style: hidden;
+	background-color: rgb(255, 255, 255);
+	width: 100%;
+	margin-left: 1%;
+	margin-bottom: 1em;
+}
+
+.input-container {
+	width: 100%;
+	margin: 0.3em;
+}
+.create-post-button {
+	font-size: 0.9em;
+	margin-top: 1em;
+	cursor: pointer;
 }
