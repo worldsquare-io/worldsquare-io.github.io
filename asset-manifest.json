@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/worldsquare-frontend/static/css/main.f800b403.css",
-    "main.js": "/worldsquare-frontend/static/js/main.1422fb55.js",
+    "main.css": "/worldsquare-frontend/static/css/main.74abea78.css",
+    "main.js": "/worldsquare-frontend/static/js/main.922031c9.js",
     "index.html": "/worldsquare-frontend/index.html",
-    "main.f800b403.css.map": "/worldsquare-frontend/static/css/main.f800b403.css.map",
-    "main.1422fb55.js.map": "/worldsquare-frontend/static/js/main.1422fb55.js.map"
+    "main.74abea78.css.map": "/worldsquare-frontend/static/css/main.74abea78.css.map",
+    "main.922031c9.js.map": "/worldsquare-frontend/static/js/main.922031c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.f800b403.css",
-    "static/js/main.1422fb55.js"
+    "static/css/main.74abea78.css",
+    "static/js/main.922031c9.js"
   ]
 }
