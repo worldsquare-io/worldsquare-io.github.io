@@ -2,7 +2,6 @@ import { DivIcon } from 'leaflet';
 import { useEffect } from 'react';
 import { TileLayer, MapContainer, Marker, Polyline, useMapEvent, useMap } from 'react-leaflet';
 import { renderToStaticMarkup } from 'react-dom/server'
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
 // Constants
@@ -11,7 +10,6 @@ const defaultZoom = 12;
 
 // Methods
 const createMarkerIcon = (variant) => {
-    console.log(variant);
     return new DivIcon({
         html: renderToStaticMarkup(
             <FaMapMarkerAlt 
@@ -27,7 +25,6 @@ const createMarkerIcon = (variant) => {
 
 // Components
 const PinComponent = ({ id, location, variant, onClick }) => {
-    console.log(variant);
     return (
         <Marker
             position={location}
@@ -43,7 +40,7 @@ const MoveToUserOnLoadComponent = () => {
 
         map.locate().on('locationfound', (e) => {
             console.log("Initial user position acquired");
-            map.setView(e.latlng, 12);
+            map.flyTo(e.latlng, 12);
         });
 
         // eslint-disable-next-line

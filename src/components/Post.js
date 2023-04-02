@@ -1,13 +1,21 @@
+import { Card, Badge } from "react-bootstrap";
+
 function Post({ title, variant }) {
     return (
-        <div>
-            <p className="post">
-                {title}
-                <div>
-                    <span className="variant">{variant}</span>
-                </div>
-            </p>
-        </div>
+        <Card className="mt-2">
+            <Card.Header>
+                <Badge>{variant}</Badge>
+            </Card.Header>
+            <Card.Body>{title}</Card.Body>
+        </Card>
+        // <div>
+        //     <p className="post">
+        //         {title}
+        //         <div>
+        //             <span className="variant">{variant}</span>
+        //         </div>
+        //     </p>
+        // </div>
     );
 }
 
