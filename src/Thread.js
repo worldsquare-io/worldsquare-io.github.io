@@ -53,51 +53,31 @@ function Thread({ threadID }) {
 
 	const [text, setText] = useState("");
 
+	const [globalReponse, setGlobalResponse] = useState();
+
 	function handleInputMessage(e) {
 		console.log(text);
 		setText("");
-		// fetch("https://api.worldsquare.io/items/", {
-		// 	method: "POST",
-		// 	body: JSON.stringify({
-		// 		_id: String(nanoid()),
-		// 		timestamp: String(Date.now() / 1000),
-		// 		location: [345.70239546, -253.23460611],
-		// 		message: String(text),
-		// 		variant: "foreign",
-		// 		root: true,
-		// 	}),
-		// })
-		// 	.then(response => response.json())
-		// 	.then(response => console.log(JSON.stringify(response)));
-		//     const tempData = {
-		//       "_id": "aflhjasfbasjflksalfasj",
-		//       "timestamp": "1680397225",
-		//       "location": [
-		//           35.70239546,
-		//           -23.23460611
-		//       ],
-		//       "message": "faasf!lll",
-		//       "variant": "foreign",
-		//       "root": true
-		// }
 		fetch("https://api.worldsquare.io/items/", {
+			headers: { "Content-Type": "application/json" },
 			method: "POST",
 			body: JSON.stringify({
-				_id: "aflhjasfbasjflksalfasj",
-				timestamp: "1680397225",
-				location: [35.70239546, -23.23460611],
-				message: "Testing 1",
-				variant: "foreign",
-				root: true,
+				timestamp: String(Date.now() / 1000),
+				location: [35.703239546, -25.23160611],
+				message: String(text),
+				variant: "remote",
 			}),
 		})
 			.then(response => response.json())
-			.then(response => console.log(JSON.stringify(response)));
+			.then(response => {
+				console.log(JSON.stringify(response));
+				 setGlobalResponse(response);
+			});
 	}
 
 	useEffect(() => {
 		getItemsFromAPI();
-	}, []);
+	}, [globalReponse]);
 
 	function getItemsFromAPI() {
 		return fetch("https://api.worldsquare.io/items/")

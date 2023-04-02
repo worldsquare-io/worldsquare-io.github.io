@@ -8,15 +8,13 @@ function App() {
 
 	return (
 		<div className="App">
-				<BsFillFilterCircleFill className="filter-icon" />
-        
+			<BsFillFilterCircleFill className="filter-icon" />
+
 			<div className="Map">
 				<Map />
 			</div>
-			{/* <div className="icon-thread-container"> */}
-				<div className="Thread">
-					<Thread threadID={threadID} />
-				{/* </div> */}
+			<div>
+				<Thread threadID={threadID} />
 			</div>
 		</div>
 	);
