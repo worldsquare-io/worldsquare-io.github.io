@@ -1,8 +1,9 @@
 import Post from "./Post";
 import Comment from "./Comment";
+import React from 'react';
 import { useState } from "react";
 import { RiSendPlaneFill } from "react-icons/ri";
-import React from 'react';
+import { postComment } from "../helpers/Api";
 
 function Thread({ parentItem, childItems }) {
     let title = parentItem.message;
@@ -10,7 +11,8 @@ function Thread({ parentItem, childItems }) {
     const [text, setText] = useState("");
 
     function handleInputMessage(e) {
-        console.log("hiihihihi");
+        e.preventDefault();
+        postComment(parentItem._id, text);
         setText("");
     }
 
@@ -25,7 +27,7 @@ function Thread({ parentItem, childItems }) {
             </div>
 
             {/* This is where the user can input a comment. */}
-            <form className="comment-input-container">
+            <form className="comment-input-container" onSubmit={handleInputMessage}>
                 <label>
                     <input
                         type="text"

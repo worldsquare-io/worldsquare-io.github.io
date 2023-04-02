@@ -9,6 +9,26 @@
     padding: 0.5em;
 }
 
+.App {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.Map {
+    background-color: white;
+    grid-column: 1 / span 3;
+}
+
+.thread-container {
+    background-color: rgb(247, 247, 247);
+    margin: 5%;
+    border-radius: 20px;
+    grid-column: 4;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 0.5em;
+}
+
 .post {
     text-align: left;
     font-weight: bold;
@@ -34,7 +54,6 @@
 }
 
 .comment-input-container {
-    display: grid;
     grid-column: 1 / span 3;
     align-items: center;
     justify-content: space-between;
@@ -65,7 +84,7 @@ select:focus {
 }
 
 .comment-container {
-    height: 75vh;
+    height: 77vh;
     overflow-y: auto;
     position: relative;
 }
@@ -86,6 +105,7 @@ select:focus {
     width: 2em;
     height: 0.2em;
     background-color: rgb(184, 255, 204);
+    border-radius: 10px;
     margin-top: 0.5em;
     margin-bottom: -0.5em;
 }
@@ -99,7 +119,7 @@ img {
     position: absolute;
     font-size: 1.5em;
     color: aliceblue;
-    /* color: red; */
+
     margin: 1em;
     bottom: 0;
     cursor: pointer;
@@ -115,37 +135,11 @@ img {
     margin-bottom: 10em;
 }
 
-.DesktopViewContainer {
-    overflow-y: hidden;
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-}
-
-.ResizeHandleOuter {
-    pointer-events: auto;
-    flex: 0 0 1em;
-}
-
 .leaflet-container {
     height: 100vh;
     width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    pointer-events: auto;
 }
 
-.ForegroundContainer {
-    float: right;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-}
-
-.ThreadContainer {
-    pointer-events: auto;
+.ResizeHandleOuter {
+    flex: 0 0 1em;
 }

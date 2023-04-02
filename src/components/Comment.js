@@ -1,10 +1,12 @@
 function Comment({ message, timestamp }) {
-
-    const date = new Date(timestamp.$date * 1000);
+    const date = new Date(timestamp);
     const hours = date.getHours();
     const minutes = "0" + date.getMinutes();
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    const day = date.getDate()
 
-    const formattedTime = hours + ':' + minutes.substr(-2);
+    const formattedTime = month + "/" + day + "/" + year + " " + hours + ':' + minutes.substr(-2);
 
     return (
         <div>
@@ -19,6 +21,6 @@ function Comment({ message, timestamp }) {
             </div>
         </div>
     );
-}
+};
 
 export default Comment;

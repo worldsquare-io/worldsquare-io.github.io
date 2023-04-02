@@ -69,25 +69,20 @@ export default function DesktopView() {
 
     return (
         <Box className="DesktopViewContainer">
-
-            {/* CSS puts this at the front. */}
-            <div className="ForegroundContainer">
-                <PanelGroup direction="horizontal">
-                    <Panel defaultSize={80} />
-                    <ResizeHandle />
-                    <Panel className="ThreadContainer">
-                        {makeThread()}
-                    </Panel>
-                </PanelGroup>
-            </div>
-
-            {/* CSS puts this at the back. */}
-            <OpenStreetMap
-                parentPins={parentPins}
-                childPins={childPins}
-                onPinClick={onPinClick}
-                onMapClick={onMapClick}
-            />
+            <PanelGroup direction="horizontal">
+                <Panel defaultSize={80}>
+                    <OpenStreetMap
+                        parentPins={parentPins}
+                        childPins={childPins}
+                        onPinClick={onPinClick}
+                        onMapClick={onMapClick}
+                    />
+                </Panel>
+                <ResizeHandle />
+                <Panel className="ThreadContainer">
+                    {makeThread()}
+                </Panel>
+            </PanelGroup>
         </Box>
     );
 };
