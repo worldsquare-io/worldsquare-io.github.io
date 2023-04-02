@@ -9,6 +9,7 @@ import { useState, useEffect }                                        from "reac
 import { Row, Col }                                                   from "react-bootstrap";
 import { Panel, PanelGroup, PanelResizeHandle }                       from "react-resizable-panels";
 import { fetchParentItems, fetchChildItems, getPosition, createPost } from "./helpers/Api";
+import { RiFilter3Fill, RiFilterFill } from "react-icons/ri";
 
 const OurSidebarCreate = ({ lastMapClick, switchToOverview, switchToDetail }) => {
     const [customLocEnab, setCustomLocEnab] = useState(false);
@@ -236,6 +237,13 @@ function App() {
                 {isOverview && makeSidebarOverview(parentItems, switchToCreate)}
                 {isDetailView && makeSidebarDetail(parentItems[0], childItems, () => switchToDetail(parentItems[0]))}
             </Panel>
+
+            {/* FAB */}
+            <div class="fab-container">
+                <Button variant="primary">
+                    <RiFilterFill />
+                </Button>
+            </div>
 
         </PanelGroup>
     );

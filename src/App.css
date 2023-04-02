@@ -206,13 +206,20 @@ img {
 }
 
 .PostCommentContainer {
-    height: 90%;
+    height: calc(100vh - 56px);
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
 .CommentInputContainer {
-    height: 10%;
+    height: 56px;
     overflow-y: hidden;
     overflow-x: hidden;
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
 }
