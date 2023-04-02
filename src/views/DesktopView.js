@@ -1,6 +1,7 @@
 import React from 'react';
 import OpenStreetMap from "../OpenStreetMap";
 import Thread from "../Thread";
+import { BsFillFilterCircleFill } from "react-icons/bs";
 
 export default function DesktopView() {
     const threadID = "abc";
@@ -33,6 +34,8 @@ export default function DesktopView() {
 
     return (
         <React.Fragment>
+            <BsFillFilterCircleFill className="filter-icon" />
+
             <div className="Map">
                 {/* <Map /> */}
                 <OpenStreetMap
