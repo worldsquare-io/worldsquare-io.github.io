@@ -1,26 +1,38 @@
-import { Icon } from 'leaflet';
+import { DivIcon } from 'leaflet';
 import { useEffect } from 'react';
 import { TileLayer, MapContainer, Marker, Polyline, useMapEvent, useMap } from 'react-leaflet';
+import { renderToStaticMarkup } from 'react-dom/server'
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 // Constants
 const defaultCenter = [0, 0];
 const defaultZoom = 12;
 
 // Methods
-const createMarkerIcon = () => new Icon({
-    iconUrl: markerIcon,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-});
+const createMarkerIcon = (variant) => {
+    console.log(variant);
+    return new DivIcon({
+        html: renderToStaticMarkup(
+            <FaMapMarkerAlt 
+                size={24} 
+                color={(variant==="local") ? 'black' : 'red'} 
+            />
+        ),
+        iconAnchor: [12, 24],
+        className: 'dummy'
+
+    });
+}
 
 // Components
-const PinComponent = ({ id, location, onClick }) => {
+const PinComponent = ({ id, location, variant, onClick }) => {
+    console.log(variant);
     return (
         <Marker
             position={location}
             eventHandlers={{ click: () => onClick ? onClick(id) : null }}
-            icon={createMarkerIcon()}
+            icon={createMarkerIcon(variant)}
         />
     );
 };
@@ -61,7 +73,7 @@ const ShowPinsComponent = ({ parentPins, childPins, onPinClick }) => {
         <PinComponent
             // This is to appease the warning about every item in a list needing a unique key.
             key={pin._id}
-
+            variant={pin.variant}
             id={pin._id}
             location={pin.location}
             onClick={onPinClick}
