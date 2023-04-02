@@ -15,10 +15,10 @@ const createMarkerIcon = () => new Icon({
 });
 
 // Components
-const PinComponent = ({ id, latlng, onClick }) => {
+const PinComponent = ({ id, location, onClick }) => {
     return (
         <Marker
-            position={latlng}
+            position={location}
             eventHandlers={{ click: () => onClick ? onClick(id) : null }}
             icon={createMarkerIcon()}
         />
@@ -48,10 +48,10 @@ const VectorLayerComponent = ({ parentPin, childPins }) => {
     return childPins.map((childPin) => (
         <Polyline
             // This is to appease the warning about every item in a list needing a unique key.
-            key={`${parentPin.id}-${childPin.id}`}
+            key={`${parentPin._id}-${childPin._id}`}
 
             pathOptions={{ color: 'black', weight: 2 }}
-            positions={[parentPin.latlng, childPin.latlng]}
+            positions={[parentPin.location, childPin.location]}
         />
     ));
 };
@@ -60,10 +60,10 @@ const ShowPinsComponent = ({ parentPins, childPins, onPinClick }) => {
     const makePinFromPin = (pin) => (
         <PinComponent
             // This is to appease the warning about every item in a list needing a unique key.
-            key={pin.id}
+            key={pin._id}
 
-            id={pin.id}
-            latlng={pin.latlng}
+            id={pin._id}
+            location={pin.location}
             onClick={onPinClick}
         />
     );

@@ -1,43 +1,70 @@
 import React from 'react';
-import OpenStreetMap from "../OpenStreetMap";
-import Thread from "../Thread";
+import OpenStreetMap from "../components/OpenStreetMap";
+import Thread from "../components/Thread";
+import { useState, useEffect } from 'react';
 import { BsFillFilterCircleFill } from "react-icons/bs";
+import { fetchParentItems, fetchChildItems } from "../helpers/Api";
 
 export default function DesktopView() {
-    const threadID = "abc";
+    const [parentPins, setParentPins] = useState([]);
+    const [childPins, setChildPins] = useState([]);
+    const [threadId, setThreadId] = useState(null);
 
-    const parentPins = [
-        {
-            id: "1",
-            latlng: [51.505, -0.09],
-        },
-    ];
+    const fetchReturnToAllParents = () => {
+        fetchParentItems()
+            .then((parentItems) => {
+                setParentPins(parentItems);
+                setChildPins([]);
+                setThreadId(null);
+            })
+            .catch((error) => console.error("Failed initial fetch of parent items:", error));
+    };
 
-    const childPins = [
-        {
-            id: "2",
-            latlng: [55.505, -0.09],
-        },
-        {
-            id: "3",
-            latlng: [61.505, 1.00],
-        },
-    ];
+    // Initial call to API.
+    useEffect(() => {
+        fetchReturnToAllParents();
+    }, []);
 
     const onPinClick = (pinId) => {
-        console.log("onPinClick", pinId);
+        let parentPin = parentPins.find((pin) => pin._id === pinId);
+        if (parentPin) {
+
+            // This means we are showing the detailed view for a parent item.
+            // Since they clicked it again, we should return to all parent items.
+            if (parentPins.length === 1) {
+                fetchReturnToAllParents();
+            }
+            else {
+                // Fetch the child items for this parent item.
+                fetchChildItems(pinId)
+                    .then((childItems) => {
+
+                        console.log("Showing detailed view for pinId:", pinId);
+                        setParentPins([parentPin]);
+                        setChildPins(childItems);
+                        setThreadId(pinId);
+
+                    })
+                    .catch((error) => console.error("Failed fetch of child items:", error));
+            }
+
+        }
     };
 
     const onMapClick = ({ lat, lng }) => {
-        console.log("onMapClick", lat, lng);
+        // console.log("onMapClick", lat, lng);
+    };
+
+    const makeThread = () => {
+        return threadId
+            ? <Thread parentItem={parentPins[0]} childItems={childPins} />
+            : null;
     };
 
     return (
         <React.Fragment>
             <BsFillFilterCircleFill className="filter-icon" />
-
             <div className="Map">
-                {/* <Map /> */}
                 <OpenStreetMap
                     parentPins={parentPins}
                     childPins={childPins}
@@ -45,9 +72,7 @@ export default function DesktopView() {
                     onMapClick={onMapClick}
                 />
             </div>
-            <div className="Thread">
-                <Thread threadID={threadID} />
-            </div>
+            {makeThread()}
         </React.Fragment>
     );
 };
