@@ -1,125 +1,127 @@
-.App {
-	display: grid;
-	height: 100vh;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
-.Map {
-	background-color: white;
-	grid-column: 1 / span 3;
-}
-
 .Thread {
-	background-color: rgb(247, 247, 247);
-	margin: 5%;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border-radius: 20px;
-	grid-column: 4;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-	padding: 0.5em;
+    background-color: rgb(247, 247, 247);
+    margin: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    grid-column: 4;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 0.5em;
 }
 
 .post {
-	text-align: left;
-	font-weight: bold;
-	font-size: 1.3em;
-	background-color: white;
-	margin: 5px;
-	border-radius: 10px;
-	padding: 3px 10px;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.3em;
+    background-color: white;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 3px 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 #comment {
-	font-weight: normal;
-	font-size: 0.9em;
-	box-shadow: none;
-	display: flexbox;
+    font-weight: normal;
+    font-size: 0.9em;
+    box-shadow: none;
+    display: flexbox;
 }
 
 #comment:hover {
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-	transition: 0.5s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: 0.5s;
 }
 
 .comment-input-container {
-	display: grid;
-	grid-column: 1 / span 3;
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
+    display: grid;
+    grid-column: 1 / span 3;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
+
 .comment-input {
-	border-style: hidden;
-	margin: 5px;
-	border-radius: 10px;
-	padding: 3px 10px;
-	background-color: rgb(229, 230, 230);
-	width: 100%;
+    border-style: hidden;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 3px 10px;
+    background-color: rgb(229, 230, 230);
+    width: 100%;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-	outline: none;
+    outline: none;
 }
 
 .send-button {
-	justify-content: space-between;
-	/* border: red solid 1px; */
-	padding: 7px;
-	grid-column: 4;
-	cursor: pointer;
+    justify-content: space-between;
+    /* border: red solid 1px; */
+    padding: 7px;
+    grid-column: 4;
+    cursor: pointer;
 }
 
 .comment-container {
-	height: 75vh;
-	overflow-y: auto;
-	position: relative;
+    height: 75vh;
+    overflow-y: auto;
+    position: relative;
 }
 
 .timestamp-container {
-	text-align: right;
-	font-weight: lighter;
-	font-size: 0.8em;
-	padding: 0.3em;
+    text-align: right;
+    font-weight: lighter;
+    font-size: 0.8em;
+    padding: 0.3em;
 }
 
 .message-container {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .color-region {
-	width: 2em;
-	height: 0.2em;
-	background-color: rgb(184, 255, 204);
-	margin-top: 0.5em;
-	margin-bottom: -0.5em;
+    width: 2em;
+    height: 0.2em;
+    background-color: rgb(184, 255, 204);
+    margin-top: 0.5em;
+    margin-bottom: -0.5em;
 }
+
 img {
-	object-fit: cover;
-	/* height: 900px; */
+    object-fit: cover;
+    /* height: 900px; */
 }
 
 .filter-icon {
-	position: absolute;
-	font-size: 1.5em;
-	color: aliceblue;
-	/* color: red; */
-	margin: 1em;
-	bottom: 0;
-	cursor: pointer;
+    position: absolute;
+    font-size: 1.5em;
+    color: aliceblue;
+    /* color: red; */
+    margin: 1em;
+    bottom: 0;
+    cursor: pointer;
 }
 
 .variant {
-  font-size: 0.5em;
-  font-weight: lighter;
-  background:rgb(207, 207, 207);
-  padding: 0.1em 0.3em;
-  border-radius: 10%;
-  color: white;
-  margin-bottom: 10em;
+    font-size: 0.5em;
+    font-weight: lighter;
+    background: rgb(207, 207, 207);
+    padding: 0.1em 0.3em;
+    border-radius: 10%;
+    color: white;
+    margin-bottom: 10em;
+}
+
+.DesktopViewContainer {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.ResizeHandleOuter {
+    flex: 0 0 1em;
 }

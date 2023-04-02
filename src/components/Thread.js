@@ -2,6 +2,7 @@ import Post from "./Post";
 import Comment from "./Comment";
 import { useState } from "react";
 import { RiSendPlaneFill } from "react-icons/ri";
+import React from 'react';
 
 function Thread({ parentItem, childItems }) {
     let title = parentItem.message;
@@ -14,16 +15,12 @@ function Thread({ parentItem, childItems }) {
     }
 
     return (
-        <div className="thread-container">
+        <React.Fragment>
             {/* This is where the post and comments are displayed. */}
             <div className="post-comment-container">
                 <Post title={title} variant={variant} />
                 <div className="comment-container">
-                    {childItems.map((item) => (
-                        <div key={item._id}>
-                            <Comment message={item.message} timestamp={item.timestamp} />
-                        </div>
-                    ))}
+                    {childItems.map((item) => <Comment key={item._id} message={item.message} timestamp={item.timestamp} />)}
                 </div>
             </div>
 
@@ -41,7 +38,7 @@ function Thread({ parentItem, childItems }) {
                 </label>
                 <RiSendPlaneFill className="send-button" onClick={handleInputMessage} />
             </form>
-        </div>
+        </React.Fragment>
     );
 }
 
