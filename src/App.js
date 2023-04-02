@@ -1,18 +1,30 @@
 import "./App.css";
-import Map from "./Map";
-import Thread from "./Thread";
+import { useState, useEffect } from "react";
+import DesktopView from './views/DesktopView';
+import MobileView from './views/MobileView';
 
+// App
 function App() {
-  const threadID = "abc";
+    // Mobile
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    function handleWindowSizeChange() {
+        setScreenWidth(window.innerWidth);
+    }
+    
+    const isMobile = screenWidth <= 768;
+    
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
 
 	return (
-		<div className="App">
-			<div className="Map">
-				<Map />
-			</div>
-			<div className="Thread">
-			<Thread threadID={threadID}/>
-			</div>
+        <div className="App">
+            {!isMobile && <DesktopView />}
+            {isMobile && <MobileView />}
 		</div>
 	);
 }
